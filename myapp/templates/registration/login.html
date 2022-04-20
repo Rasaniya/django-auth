@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="/">Back to Home</a>
+    {% if form.errors %}
+    <p>There is something went wrong</p>
+    {% endif %}
+
+    {% if next %}
+    <p>Sorry you cant access</p>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+
+        {%csrf_token%}
+
+        <p>USERNAME = {{ form.username }}</p>
+        <p>PASSWORD = {{ form.password }}</p>
+
+        <input type="submit" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+
+    </form>
+    <h2>Dont have a account? <a href="/register">REGISTER NOW</a></h2>
+</body>
+</html>
